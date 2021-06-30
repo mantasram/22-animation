@@ -1,44 +1,96 @@
-body {
-  height: 100vh;
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 60px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px #0005;
+  line-height: 30px;
+  font-size: 20px;
 }
-
-.square {
-  width: 100px;
-  height: 100px;
-  background-color: chocolate;
-  position: absolute;
+header.sticky {
+  position: fixed;
   top: 0;
   left: 0;
-  animation-name: vaziuojam;
-  animation-duration: 3300ms;
-  animation-iteration-count: infinite;
-  animation-timing-function:cubic-bezier(0.075, 0.82, 0.165, 1);
+  right: 0;
+  animation-name: slideIn;
+  animation-duration: 0.4s;
 }
-
-@keyframes vaziuojam {
+header.sticky + * {
+  margin-top: 60px;
+}
+@keyframes slideIn {
   0% {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  25% {
-    position: absolute;
-    top: 0px;
-    left: 300px;
-  }
-  50% {
-    position: absolute;
-    top: 300px;
-    left: 300px;
-  }
-  75% {
-    position: absolute;
-    top: 300px;
-    left: 0px;
+    transform: translateY(-100%);
   }
   100% {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    transform: translateY(0);
   }
+}
+header.not-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  animation-name: slideOut;
+  animation-duration: 0.4s;
+}
+header.not-sticky + * {
+  margin-top: 60px;
+}
+@keyframes slideOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 60px;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 20px;
+}
+article > footer {
+  font-style: italic;
+}
+
+.footer {
+  padding: 40px;
+  background-color: #444;
+  color: #fff;
+}
+
+.back-to-top {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #36f;
+  box-shadow: 0 4px 10px #0005;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+.back-to-top.hide {
+  display: none;
+}
+
+form {
+  display: inline-block;
+  width: 100%;
+}
+textarea {
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  font-size: 20px;
 }
